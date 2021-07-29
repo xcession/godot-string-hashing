@@ -1,0 +1,362 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/TitleBar.gd" type="Script" id=1]
+[ext_resource path="res://scripts/app.gd" type="Script" id=2]
+[ext_resource path="res://default_theme.tres" type="Theme" id=3]
+[ext_resource path="res://fonts/boon-bold-M.tres" type="DynamicFont" id=4]
+[ext_resource path="res://fonts/noto-mono-M.tres" type="DynamicFont" id=5]
+[ext_resource path="res://fonts/boon-regular-S.tres" type="DynamicFont" id=6]
+[ext_resource path="res://fonts/boon-bold-S.tres" type="DynamicFont" id=7]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+branding = NodePath("TitleBar/MarginContainer/LBLBranding")
+inputText = NodePath("TabContainer/Generator/Container/TXTText")
+inputMethod = NodePath("TabContainer/Generator/Container/HBoxContainer2/BTNMethod")
+inputSalt = NodePath("TabContainer/Generator/Container/HBoxContainer2/BTNSalt")
+outputHash = NodePath("TabContainer/Generator/Container/HBoxContainer/TXTHash")
+validText = NodePath("TabContainer/Validator/Container/TXTText")
+validHash = NodePath("TabContainer/Validator/Container/HBoxContainer/TXTHash")
+validMethod = NodePath("TabContainer/Validator/Container/HBoxContainer2/BTNMethod")
+validSalt = NodePath("TabContainer/Validator/Container/HBoxContainer2/BTNSalt")
+status = NodePath("StatusBar/MarginContainer/LBLStatus")
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 30.0
+tab_align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Generator" type="MarginContainer" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 29.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="VBoxContainer" parent="TabContainer/Generator"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 390.0
+margin_bottom = 246.0
+
+[node name="LBLText" type="Label" parent="TabContainer/Generator/Container"]
+margin_right = 380.0
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 7 )
+text = "Text:"
+
+[node name="TXTText" type="LineEdit" parent="TabContainer/Generator/Container"]
+margin_top = 17.0
+margin_right = 380.0
+margin_bottom = 46.0
+placeholder_text = "Enter some text"
+placeholder_alpha = 0.25
+caret_blink = true
+
+[node name="LBLMethod" type="Label" parent="TabContainer/Generator/Container"]
+margin_top = 50.0
+margin_right = 380.0
+margin_bottom = 63.0
+custom_fonts/font = ExtResource( 7 )
+text = "Hashing Method:"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Generator/Container"]
+margin_top = 67.0
+margin_right = 380.0
+margin_bottom = 111.0
+
+[node name="BTNMethod" type="OptionButton" parent="TabContainer/Generator/Container/HBoxContainer2"]
+margin_right = 271.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+
+[node name="BTNSalt" type="CheckButton" parent="TabContainer/Generator/Container/HBoxContainer2"]
+margin_left = 275.0
+margin_right = 380.0
+margin_bottom = 44.0
+text = "Salt"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Generator/Container"]
+margin_top = 115.0
+margin_right = 380.0
+margin_bottom = 119.0
+
+[node name="LBLHash" type="Label" parent="TabContainer/Generator/Container"]
+margin_top = 123.0
+margin_right = 380.0
+margin_bottom = 136.0
+custom_fonts/font = ExtResource( 7 )
+text = "Hash:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Generator/Container"]
+margin_top = 140.0
+margin_right = 380.0
+margin_bottom = 169.0
+
+[node name="TXTHash" type="LineEdit" parent="TabContainer/Generator/Container/HBoxContainer"]
+margin_right = 328.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 5 )
+editable = false
+
+[node name="BTNCopy" type="Button" parent="TabContainer/Generator/Container/HBoxContainer"]
+margin_left = 332.0
+margin_right = 380.0
+margin_bottom = 29.0
+text = "Copy"
+
+[node name="HSeparator2" type="HSeparator" parent="TabContainer/Generator/Container"]
+margin_top = 173.0
+margin_right = 380.0
+margin_bottom = 177.0
+
+[node name="Controls" type="HBoxContainer" parent="TabContainer/Generator/Container"]
+margin_top = 181.0
+margin_right = 380.0
+margin_bottom = 211.0
+alignment = 1
+
+[node name="BTNGenerate" type="Button" parent="TabContainer/Generator/Container/Controls"]
+margin_right = 380.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 0, 30 )
+size_flags_horizontal = 3
+text = "Generate"
+
+[node name="Validator" type="MarginContainer" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 29.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="VBoxContainer" parent="TabContainer/Validator"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 390.0
+margin_bottom = 246.0
+
+[node name="LBLText" type="Label" parent="TabContainer/Validator/Container"]
+margin_right = 380.0
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 7 )
+text = "Text:"
+
+[node name="TXTText" type="LineEdit" parent="TabContainer/Validator/Container"]
+margin_top = 17.0
+margin_right = 380.0
+margin_bottom = 46.0
+placeholder_text = "Enter valid text"
+placeholder_alpha = 0.25
+caret_blink = true
+
+[node name="LBLHash" type="Label" parent="TabContainer/Validator/Container"]
+margin_top = 50.0
+margin_right = 380.0
+margin_bottom = 63.0
+custom_fonts/font = ExtResource( 7 )
+text = "Hash:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Validator/Container"]
+margin_top = 67.0
+margin_right = 380.0
+margin_bottom = 96.0
+
+[node name="TXTHash" type="LineEdit" parent="TabContainer/Validator/Container/HBoxContainer"]
+margin_right = 271.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 5 )
+placeholder_text = "Enter valid hash"
+placeholder_alpha = 0.25
+caret_blink = true
+
+[node name="BTNPaste" type="Button" parent="TabContainer/Validator/Container/HBoxContainer"]
+margin_left = 275.0
+margin_right = 327.0
+margin_bottom = 29.0
+text = "Paste"
+
+[node name="BTNClear" type="Button" parent="TabContainer/Validator/Container/HBoxContainer"]
+margin_left = 331.0
+margin_right = 380.0
+margin_bottom = 29.0
+text = "Clear"
+
+[node name="LBLMethod" type="Label" parent="TabContainer/Validator/Container"]
+margin_top = 100.0
+margin_right = 380.0
+margin_bottom = 113.0
+custom_fonts/font = ExtResource( 7 )
+text = "Hashing Method:"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Validator/Container"]
+margin_top = 117.0
+margin_right = 380.0
+margin_bottom = 161.0
+
+[node name="BTNMethod" type="OptionButton" parent="TabContainer/Validator/Container/HBoxContainer2"]
+margin_right = 253.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+
+[node name="BTNSalt" type="CheckButton" parent="TabContainer/Validator/Container/HBoxContainer2"]
+margin_left = 257.0
+margin_right = 380.0
+margin_bottom = 44.0
+text = "Salted"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Validator/Container"]
+margin_top = 165.0
+margin_right = 380.0
+margin_bottom = 169.0
+
+[node name="Controls" type="HBoxContainer" parent="TabContainer/Validator/Container"]
+margin_top = 173.0
+margin_right = 380.0
+margin_bottom = 203.0
+alignment = 1
+
+[node name="BTNValidate" type="Button" parent="TabContainer/Validator/Container/Controls"]
+margin_right = 380.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 0, 30 )
+size_flags_horizontal = 3
+text = "Validate"
+
+[node name="StatusBar" type="Control" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -25.0
+rect_min_size = Vector2( 0, 25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="StatusBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="StatusBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 10
+custom_constants/margin_left = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LBLStatus" type="Label" parent="StatusBar/MarginContainer"]
+margin_left = 10.0
+margin_top = 6.0
+margin_right = 390.0
+margin_bottom = 19.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.423529, 0.435294, 0.576471, 1 )
+text = "READY"
+
+[node name="TitleBar" type="Control" parent="."]
+anchor_right = 1.0
+rect_min_size = Vector2( 0, 25 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="TitleBar"]
+anchor_right = 1.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 0, 25 )
+color = Color( 0.180392, 0.188235, 0.243137, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TitleBar"]
+margin_left = 10.0
+margin_right = 400.0
+margin_bottom = 26.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BTNMinimize" type="Button" parent="TitleBar/HBoxContainer"]
+margin_left = 336.0
+margin_right = 361.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 25, 25 )
+custom_fonts/font = ExtResource( 7 )
+text = "_"
+flat = true
+
+[node name="BTNClose" type="Button" parent="TitleBar/HBoxContainer"]
+margin_left = 365.0
+margin_right = 390.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 25, 25 )
+custom_fonts/font = ExtResource( 7 )
+text = "X"
+flat = true
+
+[node name="MarginContainer" type="MarginContainer" parent="TitleBar"]
+anchor_right = 1.0
+mouse_filter = 2
+custom_constants/margin_top = 35
+custom_constants/margin_left = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LBLBranding" type="Label" parent="TitleBar/MarginContainer"]
+margin_left = 10.0
+margin_top = 35.0
+margin_right = 400.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.423529, 0.435294, 0.576471, 1 )
+text = "BRANDING"
+
+[connection signal="pressed" from="TabContainer/Generator/Container/HBoxContainer/BTNCopy" to="." method="_on_BTNCopy_pressed"]
+[connection signal="pressed" from="TabContainer/Generator/Container/Controls/BTNGenerate" to="." method="_on_BTNGenerate_pressed"]
+[connection signal="pressed" from="TabContainer/Validator/Container/HBoxContainer/BTNPaste" to="." method="_on_BTNPaste_pressed"]
+[connection signal="pressed" from="TabContainer/Validator/Container/HBoxContainer/BTNClear" to="." method="_on_BTNClear_pressed"]
+[connection signal="pressed" from="TabContainer/Validator/Container/Controls/BTNValidate" to="." method="_on_BTNValidate_pressed"]
+[connection signal="gui_input" from="TitleBar" to="TitleBar" method="_on_TitleBar_gui_input"]
+[connection signal="pressed" from="TitleBar/HBoxContainer/BTNMinimize" to="TitleBar" method="_on_BTNMinimize_pressed"]
+[connection signal="pressed" from="TitleBar/HBoxContainer/BTNClose" to="TitleBar" method="_on_BTNClose_pressed"]
